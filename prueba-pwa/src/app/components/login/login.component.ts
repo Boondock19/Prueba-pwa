@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../../login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,8 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  data ='';
   loginForm : FormGroup;
-  constructor() {
+  constructor( private loginService: LoginService ) {
 
     this.loginForm = new FormGroup({
       email: new FormControl('',Validators.required),
@@ -24,5 +27,10 @@ export class LoginComponent implements OnInit {
   login(){
     console.log('Se dispara el login')
     console.log(this.loginForm.value)
+    this.loginService.post(this.loginForm.value).subscribe((data:any) => {
+      console.log(data);
+      this.data =  JSON.stringify(data);
+    })
+
   }
 }
