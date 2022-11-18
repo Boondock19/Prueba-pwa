@@ -24,6 +24,7 @@
         <div class="form-div">
           <label>Password</label>
           <input
+            *ngIf="!android"
             id="password-input"
             type="text"
             class="form-input"
@@ -34,13 +35,11 @@
           />
           <input
           *ngIf="android"
-          type="tel"
+          type="text"
           class="form-input"
           maxlength="10"
           minlength="6"
           formControlName="password"
-          (keyup)="keyUp($event)"
-          appDigitonly
         />
         </div>
         <div

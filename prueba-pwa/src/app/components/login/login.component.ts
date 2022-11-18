@@ -24,9 +24,16 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if (this.platform.ANDROID) {
-      this.android = true;
-    }
+      if (this.platform.ANDROID) {
+        this.android = true;
+      }
+
+      const passwordInput = document.getElementById("password-input")
+      passwordInput?.addEventListener("input", this.alphaOnly.bind(this));
+
+
+
+    
   }
 
 
@@ -50,4 +57,8 @@ export class LoginComponent implements OnInit {
    console.log('Key Code:',keyCode)
    console.log('del string',keyCode)
   }
+
+  alphaOnly(e:any) {
+    e.target.value = e.target.value.replace(/[^a-z][^0-9]/ig, '');
+    }
 }
