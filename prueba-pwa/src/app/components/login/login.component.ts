@@ -59,6 +59,6 @@ export class LoginComponent implements OnInit {
   }
 
   alphaOnly(e:any) {
-    e.target.value = e.target.value.replace(/[^a-z][^0-9]/ig, '');
+    e.target.value = e.target.value.replace(/[^0-9]/ig, '');
     }
 }
