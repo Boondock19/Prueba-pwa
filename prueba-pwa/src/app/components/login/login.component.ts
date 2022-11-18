@@ -28,8 +28,15 @@ export class LoginComponent implements OnInit {
         this.android = true;
       }
 
-      const passwordInput = document.getElementById("password-input")
-      passwordInput?.addEventListener("input", this.alphaOnly.bind(this));
+      window.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+        const passwordInput = document.getElementById("password-input")
+        passwordInput?.addEventListener("input", this.alphaOnly.bind(this));
+        console.log('Consiguio el elemento',passwordInput)
+    });
+      
+
+      
 
 
 
@@ -59,6 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   alphaOnly(e:any) {
+    console.log('entra con el evento',e)
     e.target.value = e.target.value.replace(/[^0-9]/ig, '');
     }
 }
